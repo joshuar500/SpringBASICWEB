@@ -11,10 +11,12 @@
 
     <context:component-scan base-package="com.joshrincon.mvc"/>
     <mvc:annotation-driven />
+    <mvc:resources mapping="/static/**" location="resources/css" />
 
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
+        <!--serving static resources (like css files)-->
     </bean>
 
 </beans>
