@@ -35,8 +35,13 @@ public class OffersController {
         return "offers";
     }
 
+
     @RequestMapping("/createoffer")
     public String createOffer(ModelMap model) {
+
+        // add an attribute to the model from the commandName in createoffer.jsp
+        // this will remember what the user types in
+        model.addAttribute("offer", new Offer());
 
         return "createoffer";
     }
@@ -55,8 +60,8 @@ public class OffersController {
                 System.out.println(error.getDefaultMessage());
             }
 
-        } else {
-            System.out.println("Form validated.");
+            return "createoffer";
+
         }
 
         return "offercreated";
