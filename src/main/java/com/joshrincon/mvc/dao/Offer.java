@@ -1,5 +1,7 @@
 package com.joshrincon.mvc.dao;
 
+import com.joshrincon.mvc.validation.ValidEmail;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -12,10 +14,13 @@ public class Offer {
     @Size(min = 3, max = 100, message = "Name must be between 3 and 100 character")
     private String name;
 
+    // validation tag - cannot be null, must be valid email
     @NotNull
-    @Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear to be a valid email address")
+    // @Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear to be a valid email address")
+    @ValidEmail(min = 6)
     private String email;
 
+    // validation tag
     @Size(min = 20, max = 300, message = "Text must be between 20 and 300 characters")
     private String text;
 

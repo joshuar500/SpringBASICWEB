@@ -4,7 +4,7 @@
     <h2>Results</h2>
 
     <c:forEach var="offer" items="${offers}">
-        <p><c:out value="${offer}" /></p>
+        Name: <c:out value="${offer.name}" /> /// Email: <c:out value="${offer.email}" /> /// Text: <c:out value="${offer.text}" />< br/>
     </c:forEach>
 </body>
 </html>

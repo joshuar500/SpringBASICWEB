@@ -3,10 +3,12 @@ package com.joshrincon.mvc.controllers;
 import com.joshrincon.mvc.dao.Offer;
 import com.joshrincon.mvc.service.OffersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,8 @@ public class OffersController {
     @RequestMapping("/offers")
     //argument takes type ModelMap
     public String showOffers(ModelMap model) {
+
+        offersService.throwTestException();
 
         List<Offer> offers = offersService.getCurrent();
 
@@ -51,18 +55,14 @@ public class OffersController {
     // bindingresult is validator
     @RequestMapping(value="/docreate", method=RequestMethod.POST)
     public String doCreate(ModelMap model, @Valid Offer offer, BindingResult result) {
+
+        // do some validation
         if(result.hasErrors()) {
-            System.out.println("Form does not validate.");
-
-            List<ObjectError> errors = result.getAllErrors();
-
-            for(ObjectError error : errors) {
-                System.out.println(error.getDefaultMessage());
-            }
-
             return "createoffer";
-
         }
+
+        // create the offer
+        offersService.create(offer);
 
         return "offercreated";
     }

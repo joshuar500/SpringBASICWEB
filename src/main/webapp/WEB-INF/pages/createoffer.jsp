@@ -13,13 +13,13 @@
 <sf:form method="post" action="${pageContext.request.contextPath}/docreate" commandName="offer">
     <table>
         <tr>
-            <td>Name: </td><td><sf:input name="name" type="text" path="name"></sf:input></td>
+            <td>Name: </td><td><sf:input name="name" type="text" path="name"></sf:input><br /><sf:errors path="name" cssClass="error" /></td>
         </tr>
         <tr>
-            <td>Email: </td><td><sf:input name="email" type="text" path="email"></sf:input></td>
+            <td>Email: </td><td><sf:input name="email" type="text" path="email"></sf:input><br /><sf:errors path="email" cssClass="error" /></td>
         </tr>
         <tr>
-            <td>Your offer: </td><td><sf:textarea name="text" type="text" path="text" rows="10" cols="20"></sf:textarea></td>
+            <td>Your offer: </td><td><sf:textarea name="text" type="text" path="text" rows="10" cols="20"></sf:textarea><br /><sf:errors path="text" cssClass="error" /></td>
         </tr>
         <tr>
             <td><input value="Create advert" type="submit" /></td>
