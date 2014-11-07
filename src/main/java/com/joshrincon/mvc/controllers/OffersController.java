@@ -30,7 +30,7 @@ public class OffersController {
     //argument takes type ModelMap
     public String showOffers(ModelMap model) {
 
-        offersService.throwTestException();
+        //offersService.throwTestException();
 
         List<Offer> offers = offersService.getCurrent();
 

@@ -12,6 +12,7 @@ public class DatabaseErrorHandler {
     // to an error.jsp instead of a list of code
     @ExceptionHandler(DataAccessException.class)
     public String handleDatabaseException(DataAccessException ex) {
+        ex.printStackTrace();
         return "error";
     }
 
