@@ -14,6 +14,7 @@
 <sf:form method="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
     <table>
         <tr>
+            <%--re-align the sf errors--%>
             <td>Username: </td><td><sf:input name="username" type="text" path="username"></sf:input><br /><sf:errors path="username" cssClass="error" /></td>
         </tr>
         <tr>

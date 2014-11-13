@@ -4,6 +4,8 @@ import com.joshrincon.mvc.dao.Offer;
 import com.joshrincon.mvc.dao.User;
 import com.joshrincon.mvc.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -41,13 +43,24 @@ public class LoginController {
 
         // do some validation
         if(result.hasErrors()) {
-            return "createaccount";
+            return "register";
         }
 
         user.setEnabled(true);
         user.setAuthority("user");
-        // create the offer
-        usersService.create(user);
+
+        if(usersService.exists(user.getUsername())){
+            result.rejectValue("username", "DuplicateKey.user.username");
+            return "register";
+        }
+
+        try {
+            // create the offer if no duplicate username is there (the catch is a fallback if the first if statement fails)
+            usersService.create(user);
+        } catch (DuplicateKeyException e) {
+            result.rejectValue("username", "DuplicateKey.user.username");
+            return "register";
+        }
 
         return "accountcreated";
     }

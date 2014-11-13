@@ -1,10 +1,28 @@
 package com.joshrincon.mvc.dao;
 
+import com.joshrincon.mvc.validation.ValidEmail;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class User {
 
+    // do some validation
+    @NotBlank
+    @Size(min = 8, max = 25)
+    @Pattern(regexp = "^\\w{8,}$")
     private String username;
+
+    @NotBlank
+    @Size(min = 8, max = 25)
+    @Pattern(regexp = "^\\S+$")
     private String password;
+
+    @ValidEmail
     private String email;
+
     private boolean enabled = false;
     private String authority;
 

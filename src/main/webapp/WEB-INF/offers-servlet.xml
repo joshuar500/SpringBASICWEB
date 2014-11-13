@@ -19,4 +19,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--create bean that holds all the properties messages-->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename">
+            <value>resources/resourceBundles/messages</value>
+        </property>
+    </bean>
+
 </beans>

@@ -5,9 +5,6 @@ import org.apache.commons.validator.routines.EmailValidator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-/**
- * Created by on 10/9/2014.
- */
 public class ValidEmailImpl implements ConstraintValidator<ValidEmail, String> {
 
     private int min;
@@ -22,7 +19,7 @@ public class ValidEmailImpl implements ConstraintValidator<ValidEmail, String> {
     public boolean isValid(String email, ConstraintValidatorContext constraintValidatorContext) {
 
         if(email.length() <= min) {
-            // if less than 6
+            // if less than 8
             return false;
         } if (!EmailValidator.getInstance(false).isValid(email)) {
             // if false true
