@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -28,6 +29,22 @@ public class LoginController {
     @RequestMapping("/login")
     public String showLogin() {
         return "login";
+    }
+
+    @RequestMapping("/admin")
+    //argument takes type ModelMap
+    public String showAdmin(Model model) {
+
+        List<User> users = usersService.getAllUsers();
+
+        model.addAttribute("users", users);
+
+        return "admin";
+    }
+
+    @RequestMapping("/loggedout")
+    public String showLoggedOut() {
+        return "loggedout";
     }
 
     @RequestMapping("/register")

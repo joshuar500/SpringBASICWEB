@@ -23,19 +23,27 @@
 
     <!--best practice is to deny all access and allow only specific pages-->
     <security:http use-expressions="true">
+        <!--admin-->
+        <security:intercept-url pattern="/admin" access="hasRole('admin')" />
+        <!--user-->
         <security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
         <security:intercept-url pattern="/docreate" access="isAuthenticated()" />
         <security:intercept-url pattern="/offercreated" access="isAuthenticated()" />
+        <!--everybody-->
         <security:intercept-url pattern="/static/**" access="permitAll" />
         <security:intercept-url pattern="/" access="permitAll" />
+        <security:intercept-url pattern="/loggedout" access="permitAll" />
         <security:intercept-url pattern="/register" access="permitAll" />
         <security:intercept-url pattern="/createaccount" access="permitAll" />
         <security:intercept-url pattern="/accountcreated" access="permitAll" />
         <security:intercept-url pattern="/" access="permitAll" />
         <security:intercept-url pattern="/login" access="permitAll" />
         <security:intercept-url pattern="/offers" access="permitAll" />
+        <!--deny everything as default-->
         <security:intercept-url pattern="/**" access="denyAll" />
+        <!--login/logout functionality-->
         <security:form-login login-page="/login" authentication-failure-url="/login?error=true" />
+        <security:logout logout-success-url="/loggedout" />
     </security:http>
 
 </beans>

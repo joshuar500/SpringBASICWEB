@@ -9,14 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
 
-    @RequestMapping(method = RequestMethod.GET)
-    //argument takes type ModelMap
-    public String showHome(ModelMap model) {
-
+    @RequestMapping("/")
+    public String showHome() {
         return "home";
     }
-
 }

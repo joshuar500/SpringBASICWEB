@@ -2,6 +2,7 @@ package com.joshrincon.mvc.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -37,5 +38,10 @@ public class UsersDAO {
     public boolean exists(String username) {
         return jdbcTemplate.queryForObject("select count(*) from users where username=:username",
                 new MapSqlParameterSource("username", username), Integer.class) > 0;
+    }
+
+    public List<User> getAllUsers() {
+        // map each these rows to a user bean
+        return jdbcTemplate.query("select * from users, authorities where users.username=authorities.username", BeanPropertyRowMapper.newInstance(User.class));
     }
 }

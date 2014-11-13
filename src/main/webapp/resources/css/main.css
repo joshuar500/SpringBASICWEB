@@ -3,3 +3,11 @@ body {
     padding: 0;
     background: #eee;
 }
+
+.error {
+    color: red;
+}
+
+.valid {
+    color: green;
+}

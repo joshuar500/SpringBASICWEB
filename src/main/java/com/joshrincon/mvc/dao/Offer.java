@@ -11,7 +11,7 @@ public class Offer {
     private int id;
 
     // validation tag for name - characters must be between 3 and 100
-    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 character")
+    @Size(min = 3, max = 100)
     private String name;
 
     // validation tag - cannot be null, must be valid email
@@ -21,7 +21,7 @@ public class Offer {
     private String email;
 
     // validation tag
-    @Size(min = 20, max = 300, message = "Text must be between 20 and 300 characters")
+    @Size(min = 20, max = 300)
     private String text;
 
     public Offer() {
