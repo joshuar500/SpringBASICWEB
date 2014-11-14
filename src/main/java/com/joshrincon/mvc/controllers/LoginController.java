@@ -42,6 +42,11 @@ public class LoginController {
         return "admin";
     }
 
+    @RequestMapping("/denied")
+    public String showDenied() {
+        return "denied";
+    }
+
     @RequestMapping("/loggedout")
     public String showLoggedOut() {
         return "loggedout";
@@ -66,7 +71,7 @@ public class LoginController {
         }
 
         user.setEnabled(true);
-        user.setAuthority("user");
+        user.setAuthority("ROLE_USER");
 
         //TODO: check if email exists
         if(usersService.exists(user.getUsername())){
