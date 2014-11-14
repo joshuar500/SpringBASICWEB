@@ -3,6 +3,7 @@ package com.joshrincon.mvc.service;
 import com.joshrincon.mvc.dao.Offer;
 import com.joshrincon.mvc.dao.OffersDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class OffersService {
         return offersDAO.getOffers();
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     public void create(Offer offer) {
         offersDAO.create(offer);
     }

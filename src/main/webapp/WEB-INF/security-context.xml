@@ -13,18 +13,23 @@
             <security:user-service>
                 <security:user name="josh"
                                password="letmein"
-                               authorities="admin" />
+                               authorities="ROLE_ADMIN" />
             </security:user-service>
         </security:authentication-provider>
         <security:authentication-provider>
-            <security:jdbc-user-service data-source-ref="dataSource" />
+            <!--the custom sql queries including binary make it case sensitive -->
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        authorities-by-username-query="select * from authorities where binary username = ?"
+                                        users-by-username-query="select * from users where binary username = ?" />
         </security:authentication-provider>
     </security:authentication-manager>
 
     <!--best practice is to deny all access and allow only specific pages-->
     <security:http use-expressions="true">
         <!--admin-->
-        <security:intercept-url pattern="/admin" access="hasRole('admin')" />
+        <security:intercept-url pattern="/admin" access="permitAll" />
+        <!--THE BELOW SECURITY IS BLOCKED VIA METHOD ANNOTATION-->
+        <!--security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" -->
         <!--user-->
         <security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
         <security:intercept-url pattern="/docreate" access="isAuthenticated()" />

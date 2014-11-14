@@ -58,6 +58,8 @@ public class LoginController {
     @RequestMapping(value="/createaccount", method= RequestMethod.POST)
     public String createAccount(@Valid User user, BindingResult result) {
 
+        //TODO: check if passwords matched
+
         // do some validation
         if(result.hasErrors()) {
             return "register";
@@ -66,6 +68,7 @@ public class LoginController {
         user.setEnabled(true);
         user.setAuthority("user");
 
+        //TODO: check if email exists
         if(usersService.exists(user.getUsername())){
             result.rejectValue("username", "DuplicateKey.user.username");
             return "register";
