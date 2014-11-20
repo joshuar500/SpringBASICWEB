@@ -15,9 +15,23 @@
     <!--serving static resources (like css files)-->
     <mvc:resources mapping="/static/**" location="resources/css" />
 
-    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--using apache tiles resolver below instead-->
+    <!--<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>-->
+
+    <bean id="tilesViewResolver"
+          class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+    </bean>
+    <!--expects a list of layout files-->
+    <bean id="tilesConfigurer"
+          class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/layouts/default.xml</value>
+            </list>
+        </property>
     </bean>
 
     <!--create bean that holds all the properties messages-->

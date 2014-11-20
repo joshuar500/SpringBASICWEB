@@ -1,12 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Login Page</title>
-    <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css" />
-</head>
-<body onload='document.f.j_username.focus();'>
 <h3>Login with Username and Password</h3>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    document.f.j_username.focus();
+})
+</script>
 
 <c:if test="${param.error != null}">
     <span class="loginerror">Login failed. Check that your username and password are correct.</span>
@@ -33,5 +32,3 @@
 </form>
 
 <a href="${pageContext.request.contextPath}/register">Register</a>
-</body>
-</html>
