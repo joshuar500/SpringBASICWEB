@@ -33,7 +33,7 @@
         <put-attribute name="title" value="Account created" />
         <put-attribute name="content" value="/WEB-INF/tiles/accountcreated.jsp" />
     </definition>
-    <definition name="createdoffer" extends="offers.base">
+    <definition name="createoffer" extends="offers.base">
         <put-attribute name="title" value="Create an Offer" />
         <put-attribute name="content" value="/WEB-INF/tiles/createoffer.jsp" />
     </definition>

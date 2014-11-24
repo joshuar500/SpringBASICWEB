@@ -1,18 +1,17 @@
 package com.joshrincon.mvc.controllers;
 
-import com.joshrincon.mvc.dao.Offer;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
 
 @Controller
 public class HomeController {
 
+    private static Logger logger = Logger.getLogger(HomeController.class);
+
     @RequestMapping("/")
     public String showHome() {
+        logger.info("Showing homepage...");
         return "home";
     }
 }
