@@ -1,4 +1,4 @@
-package com.joshrincon.mvc;
+package com.joshrincon.mvc.tests;
 
 import org.junit.Before;
 import org.junit.Test;
