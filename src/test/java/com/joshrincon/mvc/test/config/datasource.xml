@@ -7,11 +7,11 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.joshrincon.mvc.tests" />
+    <context:component-scan base-package="com.joshrincon.mvc" />
 
     <beans profile="development">
 
-        <context:property-placeholder location="com/joshrincon/mvc/config/jdbc.properties" />
+        <context:property-placeholder location="file:D:\workspace\SpringBASICWEB\src\test\java\com\joshrincon\mvc\test\config\jdbc.properties" />
 
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
             <property name="driverClassName" value="${jdbc.driver}" />

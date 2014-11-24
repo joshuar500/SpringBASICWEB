@@ -1,4 +1,4 @@
-package com.joshrincon.mvc.tests;
+package com.joshrincon.mvc.test.tests;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +15,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
+
+/*
+*
+* TODO: Currently, file: is the only thing that
+*       works for all test cases in src/test.
+*       Correct so that classpath: is used instead
+*
+*/
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
+// change this from file to classpath when you can figure it out bro
 @ContextConfiguration("file:../../../../../main/webapp/WEB-INF/dispatcher-servlet.xml")
 public class AppTests {
     private MockMvc mockMvc;
